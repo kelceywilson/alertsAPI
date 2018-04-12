@@ -1,0 +1,62 @@
+header
+  div.column
+    div.row.searchbar
+      div.column.search-input
+        div.row
+          i(class="fa fa-search")
+          form(method="post" action="/search")
+            input(type="text" name="searchterm" placeholder="search for...")
+      i(class="fa fa-bars menu-icon")
+    div.row.banner
+      img(src='static/img/logo@2x.png')
+      p Your Community Exchange for Local Food & Ag
+    div.row.menubar
+      i(class="fa fa-bars")
+        span.space MENU
+    div.column.login
+      i(class="fa fa-user")
+        span.space
+          if member
+            a(href='/logout' class='log-button') LOG OUT
+          else
+            a(href='#' id='login-button' class='log-button') MEMBER LOGIN
+    div(id="loginModal" class="modal")
+      div(class="modal-content")
+        span(class="close") x
+        p New to the site? 
+          button(id='register-button' class='log-button') Create an Account
+        hr
+        h2.center Login
+        form.column(method='post' action='/login')
+          input(type='hidden' name="_csrf" value=csrfToken)
+          label Email
+          input(class='inputs' type="email" name="email" placeholder="Email" required=true)
+          label Password
+          input(class='inputs' type="password" name="password" placeholder="Password" required=true)
+          div.row.nowrap
+            input(type="checkbox" name="remember" value="true")
+            | Remember me
+          input(class='inputs black-button' type='submit' value="LOGIN")
+    div(id="registerModal" class="modal")
+      div(class="modal-content")
+        span(class="close") x
+        p Already have an account? 
+          button(id='login-button2' class='log-button') Login
+        hr
+        h2.center Signup
+        form.column(method='post' action='/register')
+          input(type='hidden' name="_csrf" value=csrfToken)
+          label First Name
+          input(class='inputs' type="text" name="first_name" placeholder="First Name" required=true)
+          label Last Name
+          input(class='inputs' type="text" name="last_name" placeholder="Last Name" required=true)
+          label Email
+          input(class='inputs' type="email" name="email" placeholder="Email" required=true)
+          label Password
+          input(class='inputs' type="password" name="password" placeholder="Password" required=true)
+          label.green Terms and Conditions
+          div.row.nowrap
+            input(type="checkbox" name="terms" value="true")
+            | I have READ and AGREED with the terms and conditions
+          input(class='inputs black-button' type='submit' value="SIGN UP")
+  script(src='static/js/register.js')

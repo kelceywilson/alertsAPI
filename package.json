@@ -1,0 +1,46 @@
+{
+  "name": "cromo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "export NODE_ENV='test' && mocha",
+    "start": "nodemon app.js",
+    "db:create": "createdb cromo && psql cromo < db/schema.sql",
+    "db:reset": "dropdb cromo && npm run db:create"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "client-sessions": "^0.8.0",
+    "connect-mongo": "^2.0.1",
+    "csurf": "^1.9.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "jwt-simple": "^0.5.1",
+    "mongoose": "^5.0.10",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg-promise": "^7.3.1",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "arrow-mocha": "^1.0.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1"
+  }
+}
