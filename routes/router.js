@@ -17,7 +17,7 @@ const {
 } = require('../db/db.js')
 
 router.get('/', requireAuth, (req, res) => {
-  res.send({ hi: 'there'})
+  res.send({ message: 'superdooper'})
 })
 router.post('/signin', requireSignin, Authentication.signin)
 router.post('/signup', Authentication.signup)
