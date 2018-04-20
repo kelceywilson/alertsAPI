@@ -166,17 +166,23 @@ app.use((err, req, res, next) => {
   })
 })
 
-// app.listen(app.get('port'), function () {
-//   console.log('Node app is running on port', app.get('port'))
-// })
-
-const key = fs.readFileSync('./private.key')
-const cert = fs.readFileSync('./primary.crt')
-const ca = fs.readFileSync('./intermediate.crt')
-const options = {
-  key, cert, ca
-}
-
-https.createServer(options, app).listen(app.get('port'), function () {
+app.listen(app.get('port'), function () {
   console.log('Node app is running on port', app.get('port'))
 })
+
+// const key = fs.readFileSync('./private.key')
+// const cert = fs.readFileSync('./primary.crt')
+// const ca = fs.readFileSync('./intermediate.crt')
+// const options = {
+//   key, cert, ca
+// }
+
+// const key = fs.readFileSync('./server.key')
+// const cert = fs.readFileSync('./server.crt')
+// const options = {
+//   key, cert
+// }
+
+// https.createServer(options, app).listen(app.get('port'), function () {
+//   console.log('Node app is running on port', app.get('port'))
+// })
