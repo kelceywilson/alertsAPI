@@ -9,56 +9,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://localhost:27017/alerts')
-// const { MONGODB_URI } = process.env
-// mongoose.connect(MONGODB_URI)
 
-// const passport = require('passport')
-// const FacebookStrategy = require('passport-facebook').Strategy
-// const { User } = require('./db/models')
-// const generateOrFindUser = require('./generateOrFindUser')
-//
-// function generateOrFindUser (accessToken, refreshToken, profile, done){
-//   // console.log(accessToken, refreshToken, profile);
-//   if(profile.emails[0]){
-//     User.findOneAndUpdate({
-//       email: profile.emails[0].value
-//     }, {
-//       first_name: profile.displayName || profile.username,
-//       email: profile.emails[0].value,
-//       photo: profile.photos[0].value,
-//       accessToken,
-//       refreshToken
-//     }, {
-//       upsert: true
-//     }, done)
-//   } else {
-//     const noEmailError = new Error('can not sign in')
-//     done(noEmailError, null)
-//   }
-// }
-
-// Facebook Strategy
-// passport.use(new FacebookStrategy({
-//   clientID: process.env.FACEBOOK_APP_ID,
-//   clientSecret: process.env.FACEBOOK_APP_SECRET,
-//   callbackURL: 'https://localhost:443/auth/facebook/return',
-//   profileFields: ['displayName', 'photos', 'email']
-// }, generateOrFindUser))
-
-// to serialize something is to translate a data structure for storage
-// in this case, a session storage
-// user can be something complex like a mongoose model
-// done takes two values - an error and a translation to store i/t session
-// passport.serializeUser((user, done) => {
-//   console.log('serializeUser', user._id);
-//   done(null, user._id)
-// })
-
-// to read the data again, you need to deserialize or reconstruct
-// the stored data
-// passport.deserializeUser((userId, done) => {
-//   User.findById(userId, done)
-// })
 
 const router = require('./routes/router.js')
 const auth = require('./routes/auth.js')
@@ -80,24 +31,6 @@ app.use(bodyParser.json({type: '*/*'}))
 
 
 const db = mongoose.connection
-
-// Session config for Passport and MongoDB
-// const sessionOptions = {
-//   secret: 'chowder',
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new MongoStore({
-//     mongooseConnection: db
-//   })
-// }
-
-// app.use(session(sessionOptions))
-
-// initialize passport
-// app.use(passport.initialize())
-
-// restore session
-// app.use(passport.session())
 
 // mongo error
 db.on('error', (err) => {
@@ -121,28 +54,6 @@ app.use((req, res, next) => {
 })
 
 app.use('/static', express.static('public'))
-// app.set('view engine', 'pug')
-
-// app.use(sessions({
-//   cookieName: 'session',
-//   secret: 'some_random_string',
-//   duration: 30 * 60 * 1000
-// }))
-// app.use(csrf()) // this needs to be above app.use(routes) - why?
-// app.use((req, res, next) => {
-//   if(!(req.session && req.session.user)){
-//     return next()
-//   }
-//   User.findOne({ email: req.session.user.email}, function(err, user){
-//     if(user){
-//       req.user = user
-//       delete req.user.password
-//       req.session.user = user
-//       res.locals.user = user
-//     }
-//     next()
-//   })
-// })
 
 app.use('/auth', auth)
 app.use('/', router)
@@ -172,20 +83,3 @@ app.use((err, req, res, next) => {
 app.listen(app.get('port'), function () {
   console.log('Node app is running on port', app.get('port'))
 })
-
-// const key = fs.readFileSync('./private.key')
-// const cert = fs.readFileSync('./primary.crt')
-// const ca = fs.readFileSync('./intermediate.crt')
-// const options = {
-//   key, cert, ca
-// }
-
-// const key = fs.readFileSync('./server.key')
-// const cert = fs.readFileSync('./server.crt')
-// const options = {
-//   key, cert
-// }
-
-// https.createServer(options, app).listen(app.get('port'), function () {
-//   console.log('Node app is running on port', app.get('port'))
-// })

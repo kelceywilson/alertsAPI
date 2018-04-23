@@ -2,7 +2,8 @@
 const pgp = require('pg-promise')()
 const Alert = require('../db/models.js').Alert
 
-const connection = process.env.MONGODB_URI || 'postgres:///cromo'
+const connection = 'postgres:///cromo'
+// const connection = process.env.MONGODB_URI || 'postgres:///cromo'
 // const connection = process.env.NODE_ENV === 'test'
 //   ? 'postgres:///cromo_test'
 //   : 'postgres:///cromo'
