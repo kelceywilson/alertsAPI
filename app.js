@@ -2,14 +2,9 @@ require('dotenv').config()
 
 const express = require('express')
 const bodyParser = require('body-parser')
-// const session = require('express-session')
-// const MongoStore = require('connect-mongo')(session)
-// const sessions = require('client-sessions')
-// const csrf = require('csurf')
 const mongoose = require('mongoose')
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alerts')
-
 
 const router = require('./routes/router.js')
 const auth = require('./routes/auth.js')
@@ -17,10 +12,6 @@ const auth = require('./routes/auth.js')
 const morgan = require('morgan')
 
 const app = express()
-const fs = require('fs')
-
-
-const https = require('https')
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -28,7 +19,6 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(bodyParser.json())
 app.use(bodyParser.json({type: '*/*'}))
-
 
 const db = mongoose.connection
 
