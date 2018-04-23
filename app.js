@@ -7,7 +7,10 @@ const bodyParser = require('body-parser')
 // const sessions = require('client-sessions')
 // const csrf = require('csurf')
 const mongoose = require('mongoose')
+
 mongoose.connect('mongodb://localhost:27017/alerts')
+// const { MONGODB_URI } = process.env
+// mongoose.connect(MONGODB_URI)
 
 // const passport = require('passport')
 // const FacebookStrategy = require('passport-facebook').Strategy
