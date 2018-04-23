@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 // const csrf = require('csurf')
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/alerts')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alerts')
 
 
 const router = require('./routes/router.js')
