@@ -7,7 +7,6 @@ const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alerts')
 
 const router = require('./routes/router.js')
-const auth = require('./routes/auth.js')
 
 const morgan = require('morgan')
 
@@ -17,7 +16,6 @@ app.set('port', (process.env.PORT || 5000))
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(bodyParser.json())
 app.use(bodyParser.json({type: '*/*'}))
 
 const db = mongoose.connection
@@ -44,8 +42,6 @@ app.use((req, res, next) => {
 })
 
 app.use('/static', express.static('public'))
-
-app.use('/auth', auth)
 app.use('/', router)
 
 // catch 404 and forward to error handler
