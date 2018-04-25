@@ -1,11 +1,13 @@
 const { Alert } = require('../db/models.js')
+
 /**
 * Callback to an express route to get all alerts
 * @return {Promise} - resolves to an array of objects representing all alerts
 */
 const getAllAlerts = () => {
   return Alert.find({})
-  .sort({createdAt: -1})
+    .sort({createdAt: -1})
+    .catch(err => console.log(err))
 }
 
 /**
@@ -17,6 +19,7 @@ const addNewAlert = (newAlertPost) => {
   const newAlert = new Alert(newAlertPost)
   return newAlert.save()
     .then(() => getAllAlerts())
+    .catch(err => console.log(err))
 }
 
 /**
@@ -26,6 +29,7 @@ const addNewAlert = (newAlertPost) => {
  */
 const getOneAlert = (alertId) => {
   return Alert.findById(alertId)
+    .catch(err => console.log(err))
 }
 
 /**
@@ -37,7 +41,7 @@ const deleteOneAlert = (alertId) => {
   return Alert.findById(alertId, (err, alertToDelete) => {
     alertToDelete.remove()
   })
-    .then(() => getAllAlerts())
+    .catch(err => console.log(err))
 }
 
 module.exports = {
