@@ -15,11 +15,11 @@ const getAllAlerts = () => {
 * @param {object} newAlertPost - represents new alert
 * @return {Promise} -resolves to an array of objects representing all alerts
 */
-const addNewAlert = (newAlertPost) => {
+const addNewAlert = (newAlertPost, next) => {
   const newAlert = new Alert(newAlertPost)
   return newAlert.save()
     .then(() => getAllAlerts())
-    .catch(err => console.log(err))
+    .catch(err => next(err))
 }
 
 /**
