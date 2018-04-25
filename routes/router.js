@@ -26,6 +26,7 @@ router.post('/signup', Authentication.signup)
 router.get('/alerts', (req, res) => {
   getAllAlerts()
     .then(alerts => res.json(alerts))
+    .catch(err => console.log(err))
 })
 // GET one alert
 router.get('/alerts/:aID', (req, res) => {
