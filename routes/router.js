@@ -10,6 +10,11 @@ const {
   getOneAlert
 } = require('../db/db.js')
 
+/* CODE_REVIEW: Consider replacing methods above with :
+const db = require('../db/db')
+- will have to update db.js to do this.
+*/
+
 const requireAuth = passport.authenticate('jwt', { session: false })
 const requireSignin = passport.authenticate('local', { session: false })
 
