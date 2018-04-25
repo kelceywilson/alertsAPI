@@ -50,16 +50,6 @@ router.get('/alerts/search', (req, res, next) => {
 })
 
 // DELETE one alert
-// router.delete('/alerts/:aID', (req, res, next) => {
-//   Alert.findById(req.params.aID, (err, alert) => {
-//     if(err) return next(err)
-//     alert.remove((error, deleted) => {
-//       if(error) return next(error)
-//       getAllAlerts()
-//         .then(alerts => res.status(201).json(alerts))
-//     })
-//   })
-// })
 router.delete('/alerts/:aID', (req, res) => {
   deleteOneAlert(req.params.aID)
     .then(alerts => res.status(201).json(alerts))
