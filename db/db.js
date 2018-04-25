@@ -1,5 +1,8 @@
 const { Alert } = require('../db/models.js')
 
+/*CODE_REVIEW: Consider also adding catch to router that calls these methods
+*/
+
 /**
 * Callback to an express route to get all alerts
 * @return {Promise} - resolves to an array of objects representing all alerts
