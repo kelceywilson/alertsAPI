@@ -38,6 +38,7 @@ router.post('/alerts', (req, res) => {
     .then(alerts => res.json(alerts))
 })
 // GET filter/search alerts
+// TODO modularize into db.js file and make fuzzy
 router.get('/alerts/search', (req, res, next) => {
   console.log(req.query.terms);
   const terms = req.query.terms
@@ -50,8 +51,13 @@ router.get('/alerts/search', (req, res, next) => {
 })
 
 // DELETE one alert
-router.delete('/alerts/:aID', (req, res) => {
+router.delete('/alerts/:aID', (req, res, next) => {
   deleteOneAlert(req.params.aID)
-    .then(alerts => res.status(201).json(alerts))
+    .then(deleted => console.log(deleted))
+    .then(() => {
+      getAllAlerts()
+        .then(alerts => res.status(201).json(alerts))
+    })
 })
+
 module.exports = router
