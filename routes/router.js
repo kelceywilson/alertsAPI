@@ -34,7 +34,6 @@ router.post('/alerts', (req, res) => {
 })
 
 // GET filter/search alerts
-// TODO modularize into db.js file and make fuzzy
 // TODO adapt to use filter as well
 router.get('/alerts/search', (req, res) => {
   const { terms } = req.query
