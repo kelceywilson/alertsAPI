@@ -15,7 +15,7 @@ const app = express()
 app.set('port', (process.env.PORT || 5000))
 
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({type: '*/*'}))
 
 const db = mongoose.connection
