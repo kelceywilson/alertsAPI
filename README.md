@@ -12,8 +12,8 @@
 | POST | `/alerts` | CREATES new alert |
 | GET | `/alerts` | READS all alerts |
 | GET | `/alerts/:id` | READS one alert |
-| PUT | `/alerts/:id` | UPDATES one book (WIP) |
-| DELETE | `/alerts/:id` | DELETES one book |
+| PUT | `/alerts/:id` | UPDATES one alert (WIP) |
+| DELETE | `/alerts/:id` | DELETES one alert |
 
 #### Sample Response
 
@@ -21,7 +21,7 @@ GET `/alerts`
 
 ```js
 {
-  books: [
+  alerts: [
     {
       "createdAt": "2018-04-27T19:02:56.283Z",
       "updatedAt": "2018-04-27T19:02:56.283Z",
