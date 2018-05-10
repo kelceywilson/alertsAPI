@@ -1,8 +1,13 @@
 {
-  "name": "cromo",
+  "name": "alertsAPI",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kelceywilson/alertsAPI"
+  },
   "directories": {
     "test": "test"
   },
@@ -14,11 +19,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "client-sessions": "^0.8.0",
+    "cloudinary": "^1.11.0",
     "connect-mongo": "^2.0.1",
     "cors": "^2.8.4",
     "csurf": "^1.9.0",

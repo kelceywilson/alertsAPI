@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 // const cors = require('cors')
+const cloudinary = require('cloudinary')
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alerts')
 
@@ -21,6 +22,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({type: '*/*'}))
 
 const db = mongoose.connection
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+})
 
 // mongo error
 db.on('error', (err) => {
