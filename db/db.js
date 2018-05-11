@@ -30,15 +30,23 @@ const getOneAlert = alertId => Alert.findById(alertId)
  */
 const deleteOneAlert = alertId => Alert.findByIdAndRemove(alertId)
 
-// TODO tweak to search body, price, etc., rather than type
 /**
  * Callback to an express route to search for all alerts that has search terms in title or type
  * @param  {string} terms - entered search terms
  * @return {Promise} - resolves to array of objects representing relevant alerts
  */
 const filterAlerts = (terms) => {
+  console.log(terms);
   const splitTerms = terms.split(' ')
-  return Alert.where({$or: [{title: { $in: splitTerms}}, {type: { $in: splitTerms}}]})
+  return Alert.where({$or:
+    [
+      {alert_type: { $in: splitTerms}},
+      {city: { $in: splitTerms}},
+      {county: { $in: splitTerms}},
+      {title: { $in: splitTerms}},
+      {zip: { $in: splitTerms}}
+    ]
+  })
 }
 
 module.exports = {
