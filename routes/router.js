@@ -37,10 +37,20 @@ router.post('/alerts', (req, res) => {
     .catch(err => console.log(err))
 })
 
-// GET filter/search alerts
+// GET search alerts
 router.get('/alerts/search', (req, res) => {
   const { terms } = req.query
-  db.filterAlerts(terms)
+  db.searchAlerts(terms)
+    .then((alerts) => {
+      res.json(alerts)
+    })
+    .catch(err => console.log(err))
+})
+
+// GET filter alerts
+router.get('/alerts/filter', (req, res) => {
+  const { filterBy } = req.query
+  db.filterAlerts(filterBy)
     .then((alerts) => {
       res.json(alerts)
     })

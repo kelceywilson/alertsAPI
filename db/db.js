@@ -35,7 +35,7 @@ const deleteOneAlert = alertId => Alert.findByIdAndRemove(alertId)
  * @param  {string} terms - entered search terms
  * @return {Promise} - resolves to array of objects representing relevant alerts
  */
-const filterAlerts = (terms) => {
+const searchAlerts = (terms) => {
   console.log(terms);
   const splitTerms = terms.split(' ')
   return Alert.where({$or:
@@ -49,10 +49,16 @@ const filterAlerts = (terms) => {
   })
 }
 
+const filterAlerts = (filterBy) => {
+  console.log(filterBy);
+  return Alert.where({alert_type: filterBy})
+}
+
 module.exports = {
   addNewAlert,
   deleteOneAlert,
   filterAlerts,
   getAllAlerts,
-  getOneAlert
+  getOneAlert,
+  searchAlerts
 }
