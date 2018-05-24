@@ -37,6 +37,9 @@ const deleteOneAlert = alertId => Alert.findByIdAndRemove(alertId)
  */
 const searchAlerts = (terms) => {
   console.log(terms);
+  if (terms === '') {
+    return getAllAlerts()
+  }
   const splitTerms = terms.split(' ')
   return Alert.where({$or:
     [
