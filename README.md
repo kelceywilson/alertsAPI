@@ -41,3 +41,6 @@ GET `/alerts`
   ]
 }
 ```
+
+## TODO
+Make search case-insensitive.
