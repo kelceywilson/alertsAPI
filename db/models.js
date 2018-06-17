@@ -75,7 +75,7 @@ UserSchema.method('update', function(updates, callback){
 
 // this.password refers to the password of the user
 UserSchema.methods.comparePassword = function(candidatePassword, callback) {
-  console.log(this.password);
+  console.log('UserSchema password', this.password);
   const isMatch = bcrypt.compareSync(candidatePassword, this.password)
   callback(null, isMatch)
 }

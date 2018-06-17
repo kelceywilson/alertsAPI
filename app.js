@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-// const cors = require('cors')
+const cors = require('cors')
 const cloudinary = require('cloudinary')
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/alerts')
@@ -41,7 +41,7 @@ db.once('open', () => {
 // this can all be replaced by uncommenting cors middleware and app.use
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin', 'Origin, X-Requested-With, Content-Type, Accept, authorization')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, authorization')
   if(req.method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', 'PUT,POST,DELETE')
     return res.status(200).json({})
